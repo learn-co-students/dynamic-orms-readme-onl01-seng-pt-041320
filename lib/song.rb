@@ -53,6 +53,8 @@ class Song
     self.class.column_names.delete_if {|col| col == "id"}.join(", ")
   end
 
+  #some kind of change
+
   def self.find_by_name(name)
     sql = "SELECT * FROM #{self.table_name} WHERE name = '#{name}'"
     DB[:conn].execute(sql)
