@@ -58,6 +58,9 @@ class Song
     DB[:conn].execute(sql)
   end
 
+  def practice
+    puts "ORM practice"
+  end
 end
 
 
