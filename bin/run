@@ -1,13 +1,22 @@
 #!/usr/bin/env ruby 
 require 'sqlite3'
+require 'pry'
 
 require_relative "../lib/song.rb"
 require_relative "../config/environment.rb"
 
+binding.pry
+rachel = Friend.new(name: "Rachel Green", actor: "Jennifer Aniston")
+rachel.save
+binding.pry
 
-song = Song.new(name: "Hello", album: "25")
-puts "song name: " + song.name
-puts "song album: " + song.album
-song.save
+joey = Friend.new(name: "Joey Tribianni", actor: "Matt LeBlanc")
+joey.save
 
-DB[:conn].execute("SELECT * FROM songs")
+result = DB[:conn].execute("SELECT * FROM friends")
+binding.pry
+result.each {|friend| puts "#{friend[1]} - #{friend[2]}"}
+
+# result = DB[:conn].execute("SELECT * FROM songs")
+# binding.pry
+# result.each{|song| puts "#{song.name} - #{song.album}"}

@@ -1,7 +1,7 @@
 require_relative "../config/environment.rb"
 require 'active_support/inflector'
 
-class Song
+class Friend
 
 
   def self.table_name
@@ -55,6 +55,11 @@ class Song
 
   def self.find_by_name(name)
     sql = "SELECT * FROM #{self.table_name} WHERE name = '#{name}'"
+    DB[:conn].execute(sql)
+  end
+
+  def self.find_by_id(id)
+    sql = "SELECT * FROM #{self.table_name} WHERE id = '#{id}'"
     DB[:conn].execute(sql)
   end
 
